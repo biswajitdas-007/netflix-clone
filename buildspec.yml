@@ -12,7 +12,7 @@ phases:
   post_build:
     commands:
       - echo "Copying build artifacts to S3..."
-      - aws s3 sync ./build s3://netflix-clone-demo-bucket-007/ --delete # Replace with your S3 bucket name
+      - aws s3 sync ./build s3://netflix-clone-bucket-007/ --delete # Replace with your S3 bucket name
 
 artifacts:
   files:

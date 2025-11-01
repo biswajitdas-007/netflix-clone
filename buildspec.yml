@@ -5,10 +5,6 @@ phases:
     commands:
       - echo "Installing npm dependencies..."
       - npm install
-  pre_build:
-    commands:
-      - echo "Running tests (optional)..."
-      - npm test # Optional: if you have tests configured
   build:
     commands:
       - echo "Building the React application..."
@@ -16,9 +12,7 @@ phases:
   post_build:
     commands:
       - echo "Copying build artifacts to S3..."
-      - aws s3 sync ./build s3://your-react-app-bucket-name/ --delete # Replace with your S3 bucket name
-      - echo "Invalidating CloudFront cache (optional)..."
-      - aws cloudfront create-invalidation --distribution-id YOUR_CLOUDFRONT_DISTRIBUTION_ID --paths "/*" # Replace with your CloudFront Distribution ID
+      - aws s3 sync ./build s3://netflix-clone-demo-bucket-007/ --delete # Replace with your S3 bucket name
 
 artifacts:
   files:

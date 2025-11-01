@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing npm dependencies..."
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running tests (optional)..."
+      - npm test # Optional: if you have tests configured
+  build:
+    commands:
+      - echo "Building the React application..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Copying build artifacts to S3..."
+      - aws s3 sync ./build s3://your-react-app-bucket-name/ --delete # Replace with your S3 bucket name
+      - echo "Invalidating CloudFront cache (optional)..."
+      - aws cloudfront create-invalidation --distribution-id YOUR_CLOUDFRONT_DISTRIBUTION_ID --paths "/*" # Replace with your CloudFront Distribution ID
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build # This specifies where the built files are located for potential artifact storage
+

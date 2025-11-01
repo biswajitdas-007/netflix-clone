@@ -22,7 +22,7 @@ const LoginScreen = () => {
           <SignUpScreen />
         ) : (
           <>
-            <h1>Unlimited films, TV programmes and more.</h1>
+            <h1>Pandey is HERO!!!! Unlimited films, TV programmes and more.</h1>
             <h2>Watch anywhere, cancel at any time.</h2>
             <h3>
               Ready to watch? Enter your email to create or restart your
